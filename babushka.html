@@ -8,16 +8,27 @@
     <title>Babuska</title>
   </head>
   <body>
-    <main id="holder"></main>
+    <header>
+      <h1>BISTRO BABUSHKA</h1>
 
-    <template>
-      <article>
-        <img src="" alt="" class="billede" />
-        <h2 class="navn"></h2>
-        <p class="kortbeskrivelse"></p>
-        <p class="pris"></p>
-      </article>
-    </template>
+      <nav>
+        <button data-troende="alle" class="valgt">Alle</button>
+        <button data-troende="ja">Forretter</button>
+        <button data-troende="nej">Hovedretter</button>
+        <button data-troende="tvivler">Desserter</button>
+      </nav>
+    </header>
+
+    <main id="holder">
+      <template>
+        <article>
+          <img src="" alt="" class="billede" />
+          <h2 class="navn"></h2>
+          <p class="kortbeskrivelse"></p>
+          <p class="pris"></p>
+        </article>
+      </template>
+    </main>
 
     <script src="script.js"></script>
   </body>
