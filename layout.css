@@ -36,7 +36,6 @@ header {
   padding: 2rem;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
   flex-flow: wrap;
   position: sticky;
   top: 0;
@@ -54,8 +53,16 @@ nav button {
   border: 2px solid rgb(250, 220, 220);
   background-color: orange;
   padding: 0.2rem;
+  font-size: 1.2rem;
+  margin-top: 1.6rem;
 }
 
 nav button:hover {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 2rem;
 }
