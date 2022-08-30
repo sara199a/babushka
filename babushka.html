@@ -30,6 +30,18 @@
     <h2>MENU</h2>
     <main id="container"></main>
 
+    <div id="popup">
+      <article>
+        <h2></h2>
+        <img src="" alt="" class="billedeurl" />
+        <h3>Navn: <span class="navn"></span></h3>
+        <p>Kategori: <span class="kategori"></span></p>
+        <p>Oprindelsesregion: <span class="oprindelsesregion"></span></p>
+        <p>Beskrivelse: <span class="langBeskrivelse"></span></p>
+        <p>Pris: <span class="pris"></span></p>
+      </article>
+    </div>
+
     <script>
       const endpoint = "https://babushka-dd8a.restdb.io/rest/menu";
       const mereInfo = {
@@ -77,9 +89,23 @@
             klon.querySelector(".kortbeskrivelse").textContent = ret.kortbeskrivelse;
             klon.querySelector(".pris").textContent = ret.pris;
 
+            klon.querySelector("article").addEventListener("click", () => visDetaljer(ret));
+
             container.appendChild(klon);
           }
         });
+      }
+
+      function visDetaljer(ret) {
+        console.log(ret);
+        popup.style.display = "block";
+        popup.querySelector("img").src = "img/" + ret.billednavn + "-md.jpg";
+        popup.querySelector(".navn").textContent = ret.navn;
+        popup.querySelector(".kategori").textContent = ret.kategori;
+        popup.querySelector(".oprindelsesregion").textContent = ret.oprindelsesregion;
+        popup.querySelector(".langBeskrivelse").textContent = ret.langbeskrivelse;
+        popup.querySelector(".pris").textContent = ret.pris + "kr";
+        popup.addEventListener("click", () => (popup.style.display = "none"));
       }
       hentData();
     </script>
