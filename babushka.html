@@ -8,28 +8,27 @@
     <title>Babuska</title>
   </head>
   <body>
+    <template>
+      <article>
+        <img src="" alt="" class="billede" />
+        <h2 class="navn"></h2>
+        <p class="kortbeskrivelse"></p>
+        <p class="pris"></p>
+      </article>
+    </template>
     <header>
       <h1>BISTRO BABUSHKA</h1>
 
       <nav>
-        <button data-troende="alle" class="valgt">Alle</button>
-        <button data-troende="ja">Forretter</button>
-        <button data-troende="nej">Hovedretter</button>
-        <button data-troende="tvivler">Desserter</button>
+        <button data-retter="alle" class="valgt">Alle</button>
+        <button data-retter="forretter">Forretter</button>
+        <button data-retter="hovedretter">Hovedretter</button>
+        <button data-retter="desserter">Desserter</button>
       </nav>
     </header>
 
     <h2>MENU</h2>
-    <main id="holder">
-      <template>
-        <article>
-          <img src="" alt="" class="billede" />
-          <h2 class="navn"></h2>
-          <p class="kortbeskrivelse"></p>
-          <p class="pris"></p>
-        </article>
-      </template>
-    </main>
+    <main id="container"></main>
 
     <script>
       const endpoint = "https://babushka-dd8a.restdb.io/rest/menu";
@@ -39,13 +38,53 @@
         },
       };
 
-      async function hentData() {
-        const response = await fetch(endpoint, mereInfo);
-        const galleri = await response.json();
-        console.log("GALLERI", galleri);
-        vis(galleri);
+      let retter;
+      let filter = "alle";
+
+      const header = document.querySelector("h1");
+      const filterKnapper = document.querySelectorAll("nav button");
+      filterKnapper.forEach((knap) => knap.addEventListener("click", filtrerMenuer));
+      hentData();
+
+      function filtrerMenuer() {
+        filter = this.dataset.retter;
+        document.querySelector(".valgt").classList.remove("valgt");
+        this.classList.add("valgt");
+        vis();
+        header.textContent = this.textContent;
       }
-      function vis(galleri) {
+
+      async function hentData() {
+        const respons = await fetch(endpoint, mereInfo);
+        retter = await respons.json();
+        console.log(retter);
+        vis();
+      }
+
+      //HER GÅR DET GALT - HJÆÆÆLP
+      function vis() {
+        const container = document.querySelector("#container");
+        const template = document.querySelector("template").content;
+        // nedenstående kode gør, at der ikke kommer dobbelt op af menuer, hvor gang man trykker ind på det bestemte filter
+        container.textContent = "";
+
+        retter.forEach((ret) => {
+          console.log("kategori", ret.kategori);
+          if (filter == ret.kategori || filter == "alle") {
+            const klon = template.cloneNode(true);
+            klon.querySelector(".billede").src = "img/" + ret.billednavn + "-md.jpg";
+            klon.querySelector(".navn").textContent = ret.navn;
+            klon.querySelector(".kortbeskrivelse").textContent = ret.kortbeskrivelse;
+            klon.querySelector(".pris").textContent = ret.pris;
+
+            container.appendChild(klon);
+          }
+        });
+      }
+      hentData();
+    </script>
+
+    <!-- function vis(galleri) {
         const holder = document.querySelector("#holder");
         const skabelon = document.querySelector("template").content;
         galleri.forEach((person) => {
@@ -58,6 +97,6 @@
         });
       }
       hentData();
-    </script>
+    </script> -->
   </body>
 </html>
