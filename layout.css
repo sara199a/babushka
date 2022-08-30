@@ -20,7 +20,6 @@ article {
 }
 
 img {
-  /* aspect-ratio: 1/1; */
   max-width: 100%;
   object-fit: contain;
 }
@@ -37,10 +36,7 @@ header {
   display: flex;
   justify-content: space-between;
   flex-flow: wrap;
-  position: sticky;
   top: 0;
-
-  z-index: 100;
 }
 
 h1 {
@@ -62,6 +58,11 @@ nav button:hover {
 }
 
 h2 {
+  margin-top: 2rem;
+  font-size: 2rem;
+}
+
+.menu {
   text-align: center;
   margin-top: 2rem;
   font-size: 2rem;
@@ -73,7 +74,7 @@ h2 {
   height: 100vh;
   top: 0;
   left: 0;
-  background-color: rgbaa(234, 107, 107);
+  background-color: #000000aa;
   justify-content: center;
   align-items: center;
   display: none;
@@ -87,5 +88,22 @@ h2 {
   margin: 4em auto;
   border-radius: 25px;
   padding: 12px;
-  background-color: white;
+  background-color: rgb(250, 220, 220);
+  justify-content: center;
+  padding-inline: 4rem;
+  padding-bottom: 2rem;
+}
+
+#popup .billedeurl {
+  max-width: 80%;
+  align-self: center;
+}
+
+p {
+  padding-top: 1.2rem;
+}
+
+h3 {
+  padding-top: 1.2rem;
+  font-size: 1.6rem;
 }

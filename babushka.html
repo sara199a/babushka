@@ -24,10 +24,11 @@
         <button data-retter="forretter">Forretter</button>
         <button data-retter="hovedretter">Hovedretter</button>
         <button data-retter="desserter">Desserter</button>
+        <button data-retter="drikkevarer">Drikkevarer</button>
       </nav>
     </header>
 
-    <h2>MENU</h2>
+    <h2 class="menu">MENU</h2>
     <main id="container"></main>
 
     <div id="popup">
@@ -87,7 +88,7 @@
             klon.querySelector(".billede").src = "img/" + ret.billednavn + "-md.jpg";
             klon.querySelector(".navn").textContent = ret.navn;
             klon.querySelector(".kortbeskrivelse").textContent = ret.kortbeskrivelse;
-            klon.querySelector(".pris").textContent = ret.pris;
+            klon.querySelector(".pris").textContent = ret.pris + " kr.";
 
             klon.querySelector("article").addEventListener("click", () => visDetaljer(ret));
 
@@ -104,7 +105,7 @@
         popup.querySelector(".kategori").textContent = ret.kategori;
         popup.querySelector(".oprindelsesregion").textContent = ret.oprindelsesregion;
         popup.querySelector(".langBeskrivelse").textContent = ret.langbeskrivelse;
-        popup.querySelector(".pris").textContent = ret.pris + "kr";
+        popup.querySelector(".pris").textContent = ret.pris + " kr.";
         popup.addEventListener("click", () => (popup.style.display = "none"));
       }
       hentData();
