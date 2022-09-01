@@ -88,7 +88,7 @@ h2 {
   margin: 4em auto;
   border-radius: 25px;
   padding: 12px;
-  background-color: rgb(250, 220, 220);
+  background-color: rgb(255, 240, 240);
   justify-content: center;
   padding-inline: 4rem;
   padding-bottom: 2rem;
@@ -106,4 +106,8 @@ p {
 h3 {
   padding-top: 1.2rem;
   font-size: 1.6rem;
+}
+
+.bg_retter {
+  background-color: rgb(255, 240, 240);
 }
